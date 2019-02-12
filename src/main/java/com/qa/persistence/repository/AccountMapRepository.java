@@ -1,14 +1,9 @@
 package com.qa.persistence.repository;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.qa.persistence.domain.Account;
 //import com.qa.util.JACKSONUtil;
 import com.qa.util.JSONUtil;
@@ -18,7 +13,12 @@ public class AccountMapRepository implements AccountRepository {
 	JSONUtil util = new JSONUtil();
 	//JACKSONUtil util = new JACKSONUtil();
 	//ObjectMapper util = new ObjectMapper();
-	private static long id;
+	private long id=0;
+
+	public AccountMapRepository(long id) {
+		super();
+		this.id = id;
+	}
 
 	Map<Long, Account> accountMap = new HashMap<Long, Account>();
 
@@ -47,6 +47,20 @@ public class AccountMapRepository implements AccountRepository {
 	public String updateAccount(Long id, String account) {
 		this.accountMap.replace(id, util.getObjectForJSON(account, Account.class));
 		return "Account updated.";
+	}
+	
+	public int getFirstNameCount(String firstName) {
+		int count=0;
+		System.out.println(this.accountMap.size());
+		System.out.println("id" + accountMap.size());
+		
+		for(Long i=(long) 0; i<accountMap.size();i++) {
+			System.out.println(accountMap.get(i).getFirstName());
+			if (accountMap.get(i).getFirstName().equals(firstName)) {
+				count++;
+			}
+		}
+		return count;
 	}
 
 }
