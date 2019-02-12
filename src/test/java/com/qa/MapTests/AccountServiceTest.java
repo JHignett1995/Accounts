@@ -19,12 +19,12 @@ public class AccountServiceTest {
 	
 	@Test
 	public void addAccountTest() {
-		assertEquals("{ \"firstName\": \"Josh\",\"lastName\": \"Josh\",\"accountNumber\": 1}", repo.createAccount("{ \"firstName\": \"Josh\",\"lastName\": \"Josh\",\"accountNumber\": 1}"));	
+		assertEquals("Success", repo.createAccount( "{ \"firstName\": \"Josh\",\"lastName\": \"Josh\",\"accountNumber\": 1}"));	
 	}
 	
 	@Test
 	public void add2AccountsTest() {
-		assertNotEquals("{ \"firstName\": \"Josh\",\"lastName\": \"Josh\",\"accountNumber\": 1}", repo.createAccount("{ \"lastName\": \"Josh\",\"accountNumber\": 1}"));	
+		assertNotEquals("Failed to add", repo.createAccount("{ \"lastName\": \"Josh\",\"accountNumber\": 1}"));	
 	}
 
 	@Test
