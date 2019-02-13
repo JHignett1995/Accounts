@@ -1,13 +1,22 @@
 package com.qa.persistence.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Account {
-	
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
+	private Long id;
 	private String firstName;
 	private String lastName;
 	private int accountNumber;
 	
-	public Account(String firstName, String lastName, int accountNumber) {
+	public Account(Long id,String firstName, String lastName, int accountNumber) {
 		super();
+		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.accountNumber = accountNumber;
