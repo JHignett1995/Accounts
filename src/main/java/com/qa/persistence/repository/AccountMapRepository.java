@@ -4,26 +4,29 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import javax.enterprise.inject.Alternative;
+
 import com.qa.persistence.domain.Account;
 //import com.qa.util.JACKSONUtil;
 import com.qa.util.JSONUtil;
 
+@Alternative
 public class AccountMapRepository implements AccountRepository {
 
 	JSONUtil util = new JSONUtil();
 	//JACKSONUtil util = new JACKSONUtil();
 	//ObjectMapper util = new ObjectMapper();
-//	private long id=0;
-//
-//	public AccountMapRepository(long id) {
-//		super();
-//		this.id = id;
-//	}
+	private long id=0;
+
+	public AccountMapRepository(long id) {
+		super();
+		this.id = id;
+	}
 
 	Map<Long, Account> accountMap = new HashMap<Long, Account>();
 
 	// You must provide concrete implementation for each of these methods
-	// do not change the method signature
+	//do not change the method signature
 
 	public String getAllAccounts() {
 		String str = "";
@@ -34,7 +37,7 @@ public class AccountMapRepository implements AccountRepository {
 	}
 
 	public String createAccount(String account) {
-		//this.accountMap.put(util.getObjectForJSON(account, Account.class));
+		this.accountMap.put(id++,util.getObjectForJSON(account, Account.class));
 		return account;
 	}
 
