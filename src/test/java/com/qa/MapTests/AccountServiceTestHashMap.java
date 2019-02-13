@@ -7,12 +7,12 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import com.qa.persistence.domain.Account;
-import com.qa.persistence.repository.AccountMapRepositoryHashmap;
+import com.qa.persistence.repository.AccountMapRepository;
 
 @Ignore
 public class AccountServiceTestHashMap {
 
-	AccountMapRepositoryHashmap repo;
+	AccountMapRepository repo;
 
 	@Before
 	public void setup() {

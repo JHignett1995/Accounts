@@ -50,6 +50,8 @@ public class AccountDBRepository implements AccountRepository {
 
 	@Transactional(REQUIRED)
 	public String updateAccount(Long id, String account) {
+		
+		Account updateAccount = manager.find(Account.class, id);
 		deleteAccount(id);
 		createAccount(account);
 		return "{\"message\": \"Account sucessfully Updated\"}";

@@ -8,7 +8,7 @@ import com.qa.persistence.domain.Account;
 //import com.qa.util.JACKSONUtil;
 import com.qa.util.JSONUtil;
 
-public class AccountMapRepositoryHashmap implements AccountRepository {
+public class AccountMapRepository implements AccountRepository {
 
 	JSONUtil util = new JSONUtil();
 	//JACKSONUtil util = new JACKSONUtil();
