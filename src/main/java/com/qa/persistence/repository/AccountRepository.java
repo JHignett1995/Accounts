@@ -2,6 +2,7 @@ package com.qa.persistence.repository;
 
 public interface AccountRepository {
 
+	String getAAccount(Long id);
 	String getAllAccounts();
 	String createAccount(String account);
 	String deleteAccount(Long id);

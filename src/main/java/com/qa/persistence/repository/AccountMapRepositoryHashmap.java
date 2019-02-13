@@ -8,17 +8,17 @@ import com.qa.persistence.domain.Account;
 //import com.qa.util.JACKSONUtil;
 import com.qa.util.JSONUtil;
 
-public class AccountMapRepository implements AccountRepository {
+public class AccountMapRepositoryHashmap implements AccountRepository {
 
 	JSONUtil util = new JSONUtil();
 	//JACKSONUtil util = new JACKSONUtil();
 	//ObjectMapper util = new ObjectMapper();
-	private long id=0;
-
-	public AccountMapRepository(long id) {
-		super();
-		this.id = id;
-	}
+//	private long id=0;
+//
+//	public AccountMapRepository(long id) {
+//		super();
+//		this.id = id;
+//	}
 
 	Map<Long, Account> accountMap = new HashMap<Long, Account>();
 
@@ -34,7 +34,7 @@ public class AccountMapRepository implements AccountRepository {
 	}
 
 	public String createAccount(String account) {
-		this.accountMap.put(id++, util.getObjectForJSON(account, Account.class));
+		//this.accountMap.put(util.getObjectForJSON(account, Account.class));
 		return account;
 	}
 
@@ -61,6 +61,11 @@ public class AccountMapRepository implements AccountRepository {
 			}
 		}
 		return count;
+	}
+
+	public String getAAccount(Long id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
