@@ -28,7 +28,7 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	
-	public String getAnAccount(Long id) {
+	public String getAAccount(Long id) {
 		return repo.getAAccount(id);
 	}
 
