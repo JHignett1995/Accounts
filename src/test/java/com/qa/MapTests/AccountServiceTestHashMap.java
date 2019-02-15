@@ -9,16 +9,37 @@ import org.junit.Test;
 import com.qa.persistence.domain.Account;
 import com.qa.persistence.repository.AccountMapRepository;
 
-@Ignore
+
 public class AccountServiceTestHashMap {
 
 	AccountMapRepository repo;
 
 	@Before
 	public void setup() {
-		//repo = new AccountMapRepository(0);
+		repo = new AccountMapRepository(0);
 	}
 
+	@Test
+	public void updateTest() {
+		repo.createAccount("{\"firstName\":\"Josh\",\"lastName\":\"Josh\",\"accountNumber\":1}");
+		assertEquals("Account updated.",repo.updateAccount((long) 0, "{\"firstName\":\"Josh\",\"lastName\":\"Josh\",\"accountNumber\":2}"));
+	}
+	
+	@Test
+	public void getAllTest() {
+		repo.createAccount("{\"firstName\":\"Josh\",\"lastName\":\"Josh\",\"accountNumber\":1}");
+		assertEquals("{\"firstName\":\"Josh\",\"lastName\":\"Josh\",\"accountNumber\":1}",
+				repo.getAllAccounts());
+	}
+	
+	@Test
+	public void getATest() {
+		repo.createAccount("{\"firstName\":\"Josh\",\"lastName\":\"Josh\",\"accountNumber\":1}");
+
+		assertEquals("{\"firstName\":\"Josh\",\"lastName\":\"Josh\",\"accountNumber\":1}",
+				repo.getAAccount((long) 0));
+	}
+	
 	@Test
 	public void addAccountTest() {
 
@@ -34,30 +55,26 @@ public class AccountServiceTestHashMap {
 
 	@Test
 	public void removeAccountTest() {
-
+		repo.createAccount("{ \"firstName\": \"Josh\",\"lastName\": \"Josh\",\"accountNumber\": 1}");
 		assertEquals("Account has been removed.", repo.deleteAccount((long) 1));
 
 	}
 
 	@Test
 	public void remove2AccountsTest() {
-
+		repo.createAccount("{ \"firstName\": \"Josh\",\"lastName\": \"Josh\",\"accountNumber\": 1}");
+		repo.createAccount("{ \"firstName\": \"Josh\",\"lastName\": \"Josh\",\"accountNumber\": 666}");
+		assertEquals("Account has been removed.",repo.deleteAccount((long) 1));
+		assertEquals("Account has been removed.",repo.deleteAccount((long) 2));
 	}
 
 	@Test
 	public void remove2AccountTestAnd1ThatDoesntExist() {
-
-	}
-
-	@Test
-	public void jsonStringToAccountConversionTest() {
-
-	}
-
-	@Test
-	public void accountConversionToJSONTest() {
-
-		// testing JSONUtil
+		repo.createAccount("{ \"firstName\": \"Josh\",\"lastName\": \"Josh\",\"accountNumber\": 1}");
+		repo.createAccount("{ \"firstName\": \"Josh\",\"lastName\": \"Josh\",\"accountNumber\": 666}");
+		assertEquals("Account has been removed.",repo.deleteAccount((long) 1));
+		assertEquals("Account has been removed.",repo.deleteAccount((long) 2));
+		assertEquals("Account has been removed.",repo.deleteAccount((long) 9999));
 	}
 
 	@Test

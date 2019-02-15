@@ -17,7 +17,7 @@ public class AccountEndpoint {
 	@Inject 
 	private AccountService service;
 	
-	@Path("/getAllAcounts")
+	@Path("/getAllAccounts")
 	@GET
 	@Produces({"application/json"})
 	public String getAllAccounts() {
@@ -27,7 +27,7 @@ public class AccountEndpoint {
 	@Path("/getAAccount/{id}")
 	@GET
 	@Produces({"application/json"})
-	public String getAAccount(@PathParam("id")Long id) {
+	public String getAAccount(@PathParam("id") Long id) {
 		return service.getAAccount(id);
 	}
 	
@@ -51,4 +51,10 @@ public class AccountEndpoint {
 	public String updateAccount(@PathParam("account" + "id")String account, Long id) {
 		return service.updateAccount(account, id);
 	}
+
+	public void setService(AccountService service) {
+		this.service = service;
+	}
+	
+	
 }

@@ -5,4 +5,8 @@ import javax.ws.rs.core.Application;
 
 @ApplicationPath("api")
 public class JAXActivator extends Application {
+	
+	public boolean iExist() {
+		return true;
+	}
 }

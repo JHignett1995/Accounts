@@ -67,8 +67,7 @@ public class AccountMapRepository implements AccountRepository {
 	}
 
 	public String getAAccount(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return util.getJSONForObject(accountMap.get(id));
 	}
 
 }

@@ -10,11 +10,14 @@ public class AccountServiceImpl implements AccountService {
 
 	@Inject
 	private AccountRepository repo;
+	
+	
+	@Inject
 	private JSONUtil util;
 
 	public String createAccount(String account) {
 		Account aAccount = util.getObjectForJSON(account, Account.class);
-		String temp = Integer.toString((aAccount.getAccountNumber()));
+		String temp = Integer.toString(aAccount.getAccountNumber());
 		if(temp.contains("9")) {
 			return "{\"message\": \"That account number is blocked!\"}";
 		}
@@ -42,4 +45,14 @@ public class AccountServiceImpl implements AccountService {
 		return repo.deleteAccount(id);
 	}
 
+	public void setRepo(AccountRepository repo) {
+		this.repo = repo;
+	}
+
+
+	public void setUtil(JSONUtil util) {
+		this.util = util;
+	}
+
+	
 }

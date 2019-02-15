@@ -14,9 +14,12 @@ public class Account {
 	private String lastName;
 	private int accountNumber;
 	
-	public Account(Long id,String firstName, String lastName, int accountNumber) {
+	public Account() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public Account(String firstName, String lastName, int accountNumber) {
 		super();
-		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.accountNumber = accountNumber;
